@@ -1,5 +1,8 @@
 package co.edu.uts.appdemo.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,17 +24,32 @@ public class IndexController {
     @GetMapping("/perfil")
     public String  perfil(Model model) {
         model.addAttribute("titulo", "Perfil usuario");
-        Usuario usuario=new Usuario();
-        usuario.setNombre("Camilo");
-        usuario.setApellido("Perez");
-        usuario.setEmail("crodrigr@gmail.com");
-        model.addAttribute("usuario", usuario);
+        List<Usuario> usuarios=getAllUsuario();
+        model.addAttribute("usuarios", usuarios);
         return "perfil";
     }
 
+    private List<Usuario> getAllUsuario(){
+
+        List<Usuario> usuarios=new ArrayList<>();
+        usuarios.add(new Usuario("Camilo","Rodriguez","crodrigr@gmail.com"));
+        usuarios.add(new Usuario("Juan","Perez","jperez@gmail.com"));
+        usuarios.add(new Usuario("Diana","Tarazona","dtarazona@gmail.com"));
+        usuarios.add(new Usuario("Diego","Rangel","drangel@gmail.com"));
+        usuarios.add(new Usuario("Sebastian","Camargo","scamargo@gmail.com"));
+        usuarios.add(new Usuario("Carlos","Martinez","cmartinez@gmail.com"));
+        usuarios.add(new Usuario("Celina","Torres","ctorres@gmail.com"));
+        
+        return usuarios;
+
+        
+    }
+
+    
 
 
 
+    
 
     
     
